@@ -7,7 +7,6 @@ from src.requests.requests import Request
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 
-
 @pytest.fixture(scope='class')
 def create_fake_user():
     return fake_user()
@@ -20,12 +19,19 @@ def register_user(create_fake_user):
 def client():
     return Request(Config.URL)
 
-@pytest.fixture(scope='function')
-def driver():
-    options = webdriver.FirefoxOptions()
-    options.add_argument("--start-maximized")
-    driver = webdriver.Firefox(options=options)
-    driver.implicitly_wait(10)
+@pytest.fixture(params=['chrome'])
+def driver(request):
+    browser_name = request.param
+    if browser_name == 'chrome':
+        options = webdriver.ChromeOptions()
+        options.add_argument("--start-maximized")
+        driver = webdriver.Chrome(options=options)
+        driver.implicitly_wait(10)
+    elif browser_name == 'firefox':
+        options = webdriver.FirefoxOptions()
+        options.add_argument("--start-maximized")
+        driver = webdriver.Firefox(options=options)
+        driver.implicitly_wait(10)
     yield driver
     # закрытие драйвера
     driver.quit()
