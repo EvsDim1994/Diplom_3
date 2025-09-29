@@ -1,4 +1,3 @@
-import time
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from src.pages.main_page import MainStellarBurgersPage
