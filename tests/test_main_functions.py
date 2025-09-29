@@ -14,15 +14,15 @@ class TestMainFunctionsPage:
         # Ввод пароля
         authorization_form.input_password(create_fake_user["password"])
         # Нажать на кнопку Войти
-        personal_account = authorization_form.click_exit_button()
+        personal_account = authorization_form.click_entry_button()
         # Ожидание появления кнопки оформления заказа
         personal_account.check_order_button()
         # Нажать на кнопку Личного кабинета
         personal_account.click_personal_account()
         # Нажать на кпопку Конструктор
-        personal_account.click_constructor_button()
+        constructor = personal_account.click_constructor_button()
         # Проверка появления текста Соберите бургер
-        personal_account.check_constructor_text()
+        constructor.check_constructor_text()
 
     def test_list_order(self, driver: WebDriver, main_page, create_fake_user, register_user):
         # Открыть главную страницу
@@ -34,15 +34,15 @@ class TestMainFunctionsPage:
         # Ввод пароля
         authorization_form.input_password(create_fake_user["password"])
         # Нажать на кнопку Войти
-        personal_account = authorization_form.click_exit_button()
+        personal_account = authorization_form.click_entry_button()
         # Ожидание появления кнопки оформления заказа
         personal_account.check_order_button()
         # Нажать на кнопку Личного кабинета
         personal_account.click_personal_account()
         # Нажать на кпопку Лента заказов
-        personal_account.click_list_order_button()
+        list_orders = personal_account.click_list_order_button()
         # Проверка появления текста Лента заказов
-        personal_account.check_list_order_text()
+        list_orders.check_list_order_text()
 
     def test_ingredient_form(self, driver: WebDriver, main_page, create_fake_user, register_user):
         # Открыть главную страницу
@@ -54,21 +54,21 @@ class TestMainFunctionsPage:
         # Ввод пароля
         authorization_form.input_password(create_fake_user["password"])
         # Нажать на кнопку Войти
-        personal_account = authorization_form.click_exit_button()
+        personal_account = authorization_form.click_entry_button()
         # Ожидание появления кнопки оформления заказа
         personal_account.check_order_button()
         # Нажать на кнопку Личного кабинета
         personal_account.click_personal_account()
         # Нажать на кпопку Конструктор
-        personal_account.click_constructor_button()
+        constructor = personal_account.click_constructor_button()
         # Нажать на ингредиент
-        ingredient = personal_account.select_ingredient()
+        ingredient = constructor.select_ingredient()
         # Проверить, что открылось окно ингредиента
         ingredient.check_ingredient_form_title()
         # Закрыть окно ингредиента
         ingredient.close_ingredient_form()
         # Проверка появления текста Соберите бургер
-        personal_account.check_constructor_text()
+        constructor.check_constructor_text()
 
     def test_add_ingredient_to_order(self, driver: WebDriver, main_page, create_fake_user, register_user):
         # Открыть главную страницу
@@ -80,17 +80,17 @@ class TestMainFunctionsPage:
         # Ввод пароля
         authorization_form.input_password(create_fake_user["password"])
         # Нажать на кнопку Войти
-        personal_account = authorization_form.click_exit_button()
+        personal_account = authorization_form.click_entry_button()
         # Ожидание появления кнопки оформления заказа
         personal_account.check_order_button()
         # Нажать на кнопку Личного кабинета
         personal_account.click_personal_account()
         # Нажать на кпопку Конструктор
-        personal_account.click_constructor_button()
+        constructor = personal_account.click_constructor_button()
         # Добавление ингредиента в заказ
-        personal_account.drag_to_element()
+        constructor.drag_to_element()
         # Проверка добавления ингредиента
-        personal_account.check_count_buns()
+        constructor.check_count_buns()
 
     def test_make_order(self, driver: WebDriver, main_page, create_fake_user, register_user):
         # Открыть главную страницу
@@ -102,19 +102,19 @@ class TestMainFunctionsPage:
         # Ввод пароля
         authorization_form.input_password(create_fake_user["password"])
         # Нажать на кнопку Войти
-        personal_account = authorization_form.click_exit_button()
+        personal_account = authorization_form.click_entry_button()
         # Ожидание появления кнопки оформления заказа
         personal_account.check_order_button()
         # Нажать на кнопку Личного кабинета
         personal_account.click_personal_account()
         # Нажать на кпопку Конструктор
-        personal_account.click_constructor_button()
+        constructor = personal_account.click_constructor_button()
         # Добавление ингредиента в заказ
-        personal_account.drag_to_element()
+        constructor.drag_to_element()
         # Проверка добавления ингредиента
-        personal_account.check_count_buns()
+        constructor.check_count_buns()
         # Нажать на кнопку оформления заказа
-        order = personal_account.click_order_button()
+        order = constructor.click_order_button()
         # Проверка создания заказа
         order.check_order_number()
         

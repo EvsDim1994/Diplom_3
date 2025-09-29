@@ -14,4 +14,4 @@ class OrderPage(BasePage):
     def check_order_number(self):
         assert self.waiting_visibility_element(self.ORDER_NUMBER)
 
-        
+    

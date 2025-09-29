@@ -10,7 +10,8 @@ class AuthorizationPage (BasePage):
     RECOVERY_PASSWORD = (By.XPATH, ".//a[text()='Восстановить пароль']")
     EMAIL_FIELD = (By.XPATH, ".//input[@name='name']")
     PASSWORD_FIELD = (By.XPATH, ".//input[@name='Пароль']")
-    EXIT_BUTTON = (By.XPATH, ".//button[text()='Войти']")
+    ENTRY_BUTTON = (By.XPATH, ".//button[text()='Войти']")
+    ENTRY_TITLE = (By.XPATH, ".//h2[text()='Вход']")
 
     def __init__(self, driver: WebDriver):
         self.driver = driver
@@ -30,8 +31,12 @@ class AuthorizationPage (BasePage):
         self.input_text(self.PASSWORD_FIELD, password)
 
     @allure.step('Нажать на кнопку Войти')
-    def click_exit_button(self):
-        self.waiting_clickable(self.EXIT_BUTTON)
-        self.click(self.EXIT_BUTTON)
+    def click_entry_button(self):
+        self.waiting_clickable(self.ENTRY_BUTTON)
+        self.click(self.ENTRY_BUTTON)
         return PersonalAccountPage(self.driver)
+    
+    @allure.step('Проверка заголовка Вход')
+    def check_entry_title(self):
+        assert self.waiting_text_in_element(self.ENTRY_TITLE, "Вход")
     

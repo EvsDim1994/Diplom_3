@@ -6,7 +6,7 @@ from src.pages.base_page import BasePage
 
 class IngredientPage(BasePage):
     INGREDIENT_TITLE_TEXT = (By.XPATH, ".//h2[text()='Детали ингредиента']")
-    CLOSE_BUTTON = (By.XPATH, "(//button[contains(@class, 'Modal_modal__close__TnseK')])[1]")
+    CLOSE_BUTTON = (By.XPATH, "//button[contains(@class, 'Modal_modal__close_modified__3V5XS')][1]")
 
     def __init__(self, driver: WebDriver):
         self.driver = driver
@@ -15,7 +15,7 @@ class IngredientPage(BasePage):
     def check_ingredient_form_title(self):
         assert self.waiting_text_in_element(self.INGREDIENT_TITLE_TEXT, "Детали ингредиента")
 
-    @allure.step('Нажать на Лента заказов')
+    @allure.step('Закрыть форму ингредиента')
     def close_ingredient_form(self):
         self.waiting_clickable(self.CLOSE_BUTTON)
         self.click(self.CLOSE_BUTTON)

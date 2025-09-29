@@ -35,4 +35,3 @@ class RecoveryPage (BasePage):
     @allure.step('Ввод email')
     def input_email(self, email):
         self.input_text(self.EMAIL_FIELD, email)
-

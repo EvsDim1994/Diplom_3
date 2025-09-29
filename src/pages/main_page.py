@@ -16,5 +16,4 @@ class MainStellarBurgersPage(BasePage):
         self.waiting_clickable(self.ACCOUNT)
         self.click(self.ACCOUNT)
         return AuthorizationPage(self.driver)
-
         

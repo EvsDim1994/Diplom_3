@@ -19,7 +19,7 @@ def register_user(create_fake_user):
 def client():
     return Request(Config.URL)
 
-@pytest.fixture(params=['chrome'])
+@pytest.fixture(params=['chrome', 'firefox'])
 def driver(request):
     browser_name = request.param
     if browser_name == 'chrome':
