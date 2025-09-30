@@ -41,13 +41,6 @@ class ConstructorPage(BasePage):
         self.click(self.ORDER_MAKE_BUTTON)
         return OrderPage(self.driver)
     
-    @allure.step('Добавление булки и соусов')
-    def drag_to_elements(self):
-        self.drag_to_locator(self.BUN, self.BASKET)
-        # self.drag_to_locator(self.SOUCE_SPICY_X, self.BASKET)
-        # self.drag_to_locator(self.SOUCE_SPACE, self.BASKET)
-        # self.drag_to_locator(self.SOUCE_TRADITIONAL, self.BASKET)
-
     @allure.step('Ожидание появления текста Соберите бургер')
     def check_constructor_text(self):
         assert self.waiting_text_in_element(self.CONSTRUCTOR_TEXT, "Соберите бургер")
